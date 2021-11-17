@@ -1,0 +1,227 @@
+{
+	"info": {
+		"_postman_id": "96da6713-29c5-4009-93b5-ab2cdf3c92af",
+		"name": "/v1/Jobs API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Jobs",
+			"item": [
+				{
+					"name": "createJob",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{JobToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"company\": \"Apple\",\r\n    \"position\": \"front end developer\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DEV_URL_JOBS}}",
+							"host": [
+								"{{DEV_URL_JOBS}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllJobs",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{JobToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{DEV_URL_JOBS}}",
+							"host": [
+								"{{DEV_URL_JOBS}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getJob",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{JobToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{DEV_URL_JOBS}}/:id",
+							"host": [
+								"{{DEV_URL_JOBS}}"
+							],
+							"path": [
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6192ebae9cce4738c1ffbe7a"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteJob",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{JobToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{DEV_URL_JOBS}}/:id",
+							"host": [
+								"{{DEV_URL_JOBS}}"
+							],
+							"path": [
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "61943db1eec806fb647df56f"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateJob",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{JobToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"company\": \"west-mec\",\r\n    \"position\": \"student\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DEV_URL_JOBS}}/:id",
+							"host": [
+								"{{DEV_URL_JOBS}}"
+							],
+							"path": [
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6192ebae9cce4738c1ffbe7a"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Nysa\",\r\n    \"email\": \"aasdfasd@gmail.com\",\r\n    \"password\": \"1234512\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{DEV_URL_AUTH}}/register",
+					"host": [
+						"{{DEV_URL_AUTH}}"
+					],
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Auth Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonData = pm.response.json()\r",
+							"pm.globals.set(\"JobToken\", jsonData.token)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"asdf@gmail.com\",\r\n    \"password\": \"1234512\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{DEV_URL_AUTH}}/login",
+					"host": [
+						"{{DEV_URL_AUTH}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
